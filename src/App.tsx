@@ -9,11 +9,12 @@ import { RootState, useAppDispatch } from './redux/store';
 
 function App() {
   const dispatch = useAppDispatch();
+  const { productNum } = useSelector((state: RootState) => state.filter);
   const { phoneInfo } = useSelector((state: RootState) => state.phones);
 
   useEffect(() => {
     dispatch(fetchPhones());
-  }, []);
+  }, [productNum]);
 
   if (!phoneInfo.length) {
     return (
